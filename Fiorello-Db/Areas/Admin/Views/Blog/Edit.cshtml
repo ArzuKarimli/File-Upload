@@ -1,0 +1,32 @@
+﻿@model BlogEditVM
+@{
+    ViewData["Title"] = "Edit Blog";
+}
+
+@section fontawsome{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+}
+<div class="container mt-5 ml-3">
+    <h3>Edit Blog :</h3>
+    <form method="post" asp-action="Edit">
+        <input type="hidden" asp-for="Id" />
+        <div class="card">
+            <label class="input">
+                <h5>Title :</h5>
+                <input asp-for="Title" class="input__field field" type="text" maxlength="50" />
+                <span class="text-danger" asp-validation-for="Title"></span>
+                <h5>Description :</h5>
+                <input asp-for="Description" class="input__field field" type="text" maxlength="50" />
+                <span class="text-danger" asp-validation-for="Description"></span>
+                <h5>Date :</h5>
+                <input asp-for="Date" class="input__field field" type="text" maxlength="50" />
+            </label>
+            <div class="button-group">
+                <button type="submit">Submit</button>
+                <a class="btn btn-success" asp-action="Index">Back</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+

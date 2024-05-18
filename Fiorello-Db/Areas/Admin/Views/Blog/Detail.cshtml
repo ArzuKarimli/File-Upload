@@ -1,0 +1,26 @@
+﻿@model BlogDetailVM
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="container">
+    <div class="card">
+        <label class="input">
+            <h5>Title:</h5>
+            <input asp-for="Title" class="input__field field" placeholder="Username" type="text" disabled />
+            <h5>Description:</h5>
+            <input asp-for="Description" class="input__field field" placeholder="Username" type="text" disabled />
+            <h5>Date:</h5>
+            <input asp-for="Date" class="input__field field" placeholder="Username" type="text" disabled />
+            <h5>Image:</h5>
+            <img src="~/img/@Model.Image"  style="width:100px;height:100px;"/>
+        </label>
+        <div class="button-group">
+
+            <a class="btn btn-success" asp-action="Index">Back</a>
+        </div>
+
+    </div>
+</div>
+
+
