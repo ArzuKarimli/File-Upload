@@ -86,12 +86,21 @@ namespace Fiorello_Db.Areas.Admin.Controllers
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null) return BadRequest();
-            Slider slider = await _context.Sliders.Where(m => m.Id == id).FirstOrDefaultAsync();
+
+            Slider slider = await _context.Sliders.FirstOrDefaultAsync(m => m.Id == id);
+
             if (slider == null) return NotFound();
 
-             _context.Sliders.Remove(slider);
+            string path = Path.Combine(_env.WebRootPath, "img", slider.Image);
+            if (System.IO.File.Exists(path))
+            {
+                System.IO.File.Delete(path);
+            }
+            _context.Sliders.Remove(slider);
             await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(Index));
         }
+
     }
 }
